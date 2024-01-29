@@ -41,7 +41,7 @@ router.post("/login", async (req, res) => {
   );
   const { password: UserPassword, ...info } = user._doc;
   res
-    .cookie("token", token, { secure: true, sameSite: "lax" })
+    .cookie("token", token, { secure: true, sameSite: "none" })
     .status(200)
     .json(info);
   //   res.status(200).json(user);

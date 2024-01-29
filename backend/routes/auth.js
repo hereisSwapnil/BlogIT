@@ -40,7 +40,10 @@ router.post("/login", async (req, res) => {
     }
   );
   const { password: UserPassword, ...info } = user._doc;
-  res.cookie("token", token, { secure: true }).status(200).json(info);
+  res
+    .cookie("token", token, { secure: true, sameSite: "lax" })
+    .status(200)
+    .json(info);
   //   res.status(200).json(user);
   //   } catch (error) {
   //     res.status(500).json(error);

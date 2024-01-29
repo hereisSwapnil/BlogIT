@@ -18,6 +18,7 @@ router.get("/:id", async (req, res) => {
 router.post("/create", verifyToken, async (req, res) => {
   try {
     const newPost = new Post(req.body);
+    newPost.userId = req.userId;
     const savedPost = await newPost.save();
     res.status(200).json(savedPost);
   } catch (error) {
